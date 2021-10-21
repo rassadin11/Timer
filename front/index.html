@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Секундомер</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Space+Mono&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<main class="main">
+		<h1 class="main__title">Секундомер</h1>
+
+		<div class="main__timer timer">
+			<span class="timer__hours animate__animated animate__bounce">0</span>:<span class="timer__minutes animate__animated animate__bounce">00</span>:<span class="timer__seconds animate__animated animate__bounce">00</span>
+		</div>
+
+		<div class="main__buttons buttons">
+			<button class="buttons__start">Start</button>
+			<button class="buttons__stop_or_not buttons__start">Disable programmer mode</button>
+			<button class="buttons__stop">Stop</button>
+		</div>
+
+		<div class="add-time">
+			<input type="text" class="add-time__hours" placeholder="Часы">
+			<input type="text" class="add-time__minutes" placeholder="Минуты">
+			<input type="text" class="add-time__seconds" placeholder="Секунды">
+		</div>
+		
+		<button class="add-time__submit">Добавить время</button>
+	</main>
+
+	<script type="text/javascript" src="eel.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
