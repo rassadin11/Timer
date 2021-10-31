@@ -5,7 +5,7 @@ import eel
 from plyer import notification
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
-from openpyxl.styles.fills import PatternFill
+from openpyxl.styles import PatternFill, Font, Alignment
 
 def show_notification(title, message):
     notification.notify(title = title, message = message, app_icon = '../timer.ico', timeout = 5)
@@ -49,45 +49,88 @@ def timer():
 
         def addPost(obj):
             flag = True
+                    
+            path = 'C:\Python\Timer-master\dist\list.xlsx'
+
+            wb = load_workbook(filename=path)
 
             if obj['local_variable'] == False:
                 return
 
-            if flag == True:
-                try:
-                    path = 'list.xlsx'
+            try:
+                if flag == True:
+                    colors = ['000000', '7030A0', '002060', '00B0F0', '00B050', '95D050', 'FF0FF0', 'FFC000', 'FF0000', 'C000000']
+                    color = ''
+                    font_color = '000000'
 
-                    wb = load_workbook(filename=path)
+                    if obj['tm'] > '6:00:00':
+                        color = colors[0]
+                        font_color = 'ffffff'
+                    if (obj['tm'] >= '5:00:00') and (obj['tm'] < '6:00:00'):
+                        color = colors[1]
+                        font_color = 'ffffff'
+                    if (obj['tm'] >= '4:00:00') and (obj['tm'] < '5:00:00'):
+                        color = colors[2]
+                        font_color = 'ffffff'
+                    if (obj['tm'] >= '3:00:00') and (obj['tm'] < '4:00:00'):
+                        color = colors[3]
+                    if (obj['tm'] >= '2:30:00') and (obj['tm'] < '3:00:00'):
+                        color = colors[4]
+                    if (obj['tm'] >= '1:30:00') and (obj['tm'] < '2:30:00'):
+                        color = colors[5]
+                    if (obj['tm'] >= '1:00:00') and (obj['tm'] < '1:30:00'):
+                        color = colors[6]
+                    if (obj['tm'] >= '0:30:00') and (obj['tm'] < '1:00:00'):
+                        color = colors[7]
+                    if (obj['tm'] > '0:00:00') and (obj['tm'] < '0:30:00'):
+                        color = colors[8]
+                    if (obj['tm'] == '0:00:00'):
+                        color = colors[9]
 
                     for cells in wb[wb.sheetnames[0]]['A:K']:
                         for rows in cells:
                             if rows.value != None:
                                 if obj['date'] == str(rows.value):
-                                    rows.fill = PatternFill("solid", start_color="ff0ff0", end_color="ff0ff0") # work =)
+                                    rows.fill = PatternFill("solid", start_color=f"{color}", end_color=f"{color}") # work =)
+                                    rows.font = Font(color = f"{font_color}", bold=True)
+                                    wb.save(path)
 
                                     new_coords = f'{get_column_letter(rows.column + 1)}{rows.row}'
-                                    wb[wb.sheetnames[0]][new_coords] = obj['text']
 
                                     wb.save(path)
 
-                                    wb[wb.sheetnames[0]][new_coords].fill = PatternFill("solid", start_color="ff0ff0", end_color="ff0ff0") # work =)
+                                    wb[wb.sheetnames[0]][new_coords] = obj['text']
+                                    wb[wb.sheetnames[0]][new_coords].alignment = Alignment(horizontal="center", vertical="center")
+                                    wb[wb.sheetnames[0]][new_coords].font = Font(color = f"{font_color}")
+
+                                    wb.save(path)
+
+                                    wb[wb.sheetnames[0]][new_coords].fill = PatternFill("solid", start_color=f"{color}", end_color=f"{color}") # work =)
 
                                     wb.save(path)
 
                                     new_coords = f'{get_column_letter(rows.column)}{rows.row + 2}'
+
+                                    wb.save(path)
+
                                     wb[wb.sheetnames[0]][new_coords] = obj['tm']
-
+                                    wb[wb.sheetnames[0]][new_coords].alignment = Alignment(horizontal="center", vertical="center")
+                                    wb[wb.sheetnames[0]][new_coords].font = Font(color = f"{font_color}", bold=True)
+                                    
                                     wb.save(path)
 
-                                    wb[wb.sheetnames[0]][new_coords].fill = PatternFill("solid", start_color="ff0ff0", end_color="ff0ff0") # work =)
+                                    wb[wb.sheetnames[0]][new_coords].fill = PatternFill("solid", start_color=f"{color}", end_color=f"{color}") # work =)
 
                                     wb.save(path)
-                    wb.save(path)
-                except:
-                    pass
+            except: 
+                print('error')
+
+            wb.save(path)
 
         addPost(obj)
+
         stop_or_not = eel.stop_or_not()()
+
         print(stop_or_not)
 
         try:

@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(['index.py'],
-             pathex=['C:\\web\\2021\\Projects\\js'],
+             pathex=[],
              binaries=[],
-             datas=[('C:\\Users\\artem\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\eel\\eel.js', 'eel'), ('front', 'front')],
-             hiddenimports=['bottle_websocket', 'plyer.platforms.win.notification'],
+             datas=[('C:\\Users\\artem\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python38\\site-packages\\eel\\eel.js', 'eel'), ('front', 'front')],
+             hiddenimports=['bottle_websocket'],
              hookspath=[],
              hooksconfig={},
              runtime_hooks=[],
