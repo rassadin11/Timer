@@ -172,7 +172,7 @@ function show_time(wt) {
 	} else if (wt >= 60) {
 		let active_minutes = Math.floor(wt / 60)
 		let active_seconds = wt - active_minutes * 60
-		
+
 		hours.innerHTML = `00`
 
 		if (active_minutes < 10) {
@@ -268,7 +268,7 @@ function add_time() {
 		let hours = document.querySelector('.add-time__hours').value.trim()
 		let minutes = document.querySelector('.add-time__minutes').value.trim()
 		let seconds = document.querySelector('.add-time__seconds').value.trim()
-	
+
 		let all_seconds = +hours * 3600 + +minutes * 60 + +seconds
 
 		addTime = false

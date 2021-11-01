@@ -13,6 +13,7 @@ def show_notification(title, message):
 eel.init('front')
 
 @eel.expose()
+
 def timer():
     full_time = working_time = 0
     lost_seconds = False
@@ -59,7 +60,7 @@ def timer():
 
             try:
                 if flag == True:
-                    colors = ['000000', '7030A0', '002060', '00B0F0', '00B050', '95D050', 'FF0FF0', 'FFC000', 'FF0000', 'C000000']
+                    colors = ['6600ff', '7030A0', '002060', '00B0F0', '00B050', '95D050', 'FF0FF0', 'FFC000', 'FF0000', 'C000000']
                     color = ''
                     font_color = '000000'
 
